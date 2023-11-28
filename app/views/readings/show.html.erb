@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Reading #<%= @the_reading.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/readings">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_reading/<%= @the_reading.id %>">
+          Delete reading
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Member
+      </dt>
+      <dd>
+        <%= @the_reading.member_id %>
+      </dd>
+
+      <dt>
+        Book
+      </dt>
+      <dd>
+        <%= @the_reading.book_id %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_reading.status %>
+      </dd>
+
+      <dt>
+        Progress
+      </dt>
+      <dd>
+        <%= @the_reading.progress %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_reading.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_reading.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit reading
+    </h2>
+
+    <form action="/modify_reading/<%= @the_reading.id %>"  method="post" >
+      <div>
+        <label for="member_id_box">
+          Member
+        </label>
+
+        <input type="text" id="member_id_box" name="query_member_id" value="<%= @the_reading.member_id %>">
+      </div>
+
+      <div>
+        <label for="book_id_box">
+          Book
+        </label>
+
+        <input type="text" id="book_id_box" name="query_book_id" value="<%= @the_reading.book_id %>">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_reading.status %>">
+      </div>
+
+      <div>
+        <label for="progress_box">
+          Progress
+        </label>
+
+        <input type="text" id="progress_box" name="query_progress" value="<%= @the_reading.progress %>">
+      </div>
+
+      <button>
+        Update reading
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

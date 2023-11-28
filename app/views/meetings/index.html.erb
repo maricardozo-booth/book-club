@@ -1,0 +1,68 @@
+<div>
+  <div>
+    <h1>
+      List of all meetings
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+
+    
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+
+        <th>
+          Date
+        </th>
+
+        <th>
+          Book
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Attendance
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_meetings.each do |a_meeting| %>
+      <tr>
+
+        <td>
+          <%= a_meeting.date %>
+        </td>
+
+        <td>
+          <%= a_meeting.book.title %>
+        </td>
+
+        <td>
+          <%= a_meeting.status %>
+        </td>
+
+        <td>
+          <%= a_meeting.attendances_count %>
+        </td>
+        <td>
+          <a href="/meetings/<%= a_meeting.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

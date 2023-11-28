@@ -11,6 +11,19 @@
   </head>
 
   <body>
+       <nav>
+     <a href="/">Homepage</a>
+
+
+     <% if current_member == nil %>
+     <a href="/members/sign_in">Sign in</a>
+     <a href="/members/sign_up">Sign up</a>
+     <% else %>
+     <a href="/members/sign_out">Sign out</a>
+     <a href="/members/edit">Edit profile</a>
+     <% end %>
+   </nav>
+
     <%= yield %>
   </body>
 </html>

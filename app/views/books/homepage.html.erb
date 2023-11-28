@@ -1,0 +1,41 @@
+<div>
+ <div>
+   <h1>
+     Booth's Book Club
+   </h1>
+ </div>
+</div>
+
+
+<hr>
+
+
+ <div>
+   <h1>
+     This month's book: <%= @active_book.at(0).title %>
+   </h1>
+ </div>
+
+
+<hr>
+<h2>Menu</h2>
+<li>
+         <a href="/books">
+           Past readings
+         </a>
+</li>
+
+ <% if current_member == nil %>
+<div> </div>
+    <% else %>
+
+<li>
+         <a href="/meetings/new">
+           Create new meeting
+         </a>
+</li>
+
+     <% end %>
+
+
+<hr>

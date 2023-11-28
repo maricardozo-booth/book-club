@@ -1,0 +1,146 @@
+<div>
+  <div>
+    <h1>
+      Book #<%= @the_book.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/books">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_book/<%= @the_book.id %>">
+          Delete book
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_book.title %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_book.status %>
+      </dd>
+
+      <dt>
+        Author
+      </dt>
+      <dd>
+        <%= @the_book.author %>
+      </dd>
+
+      <dt>
+        Genre
+      </dt>
+      <dd>
+        <%= @the_book.genre %>
+      </dd>
+
+      <dt>
+        Number of pages
+      </dt>
+      <dd>
+        <%= @the_book.number_of_pages %>
+      </dd>
+
+      <dt>
+        Readers count
+      </dt>
+      <dd>
+        <%= @the_book.readers_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_book.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_book.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit book
+    </h2>
+
+    <form action="/modify_book/<%= @the_book.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_book.title %>">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_book.status %>">
+      </div>
+
+      <div>
+        <label for="author_box">
+          Author
+        </label>
+
+        <input type="text" id="author_box" name="query_author" value="<%= @the_book.author %>">
+      </div>
+
+      <div>
+        <label for="genre_box">
+          Genre
+        </label>
+
+        <input type="text" id="genre_box" name="query_genre" value="<%= @the_book.genre %>">
+      </div>
+
+      <div>
+        <label for="number_of_pages_box">
+          Number of pages
+        </label>
+
+        <input type="text" id="number_of_pages_box" name="query_number_of_pages" value="<%= @the_book.number_of_pages %>">
+      </div>
+
+      <div>
+        <label for="readers_count_box">
+          Readers count
+        </label>
+
+        <input type="text" id="readers_count_box" name="query_readers_count" value="<%= @the_book.readers_count %>">
+      </div>
+
+      <button>
+        Update book
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
