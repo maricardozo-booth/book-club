@@ -43,9 +43,9 @@ class ReadingsController < ApplicationController
 
     if the_reading.valid?
       the_reading.save
-      redirect_to("/readings/#{the_reading.id}", { :notice => "Reading updated successfully."} )
+      redirect_to("/", { :notice => "Reading updated successfully."} )
     else
-      redirect_to("/readings/#{the_reading.id}", { :alert => the_reading.errors.full_messages.to_sentence })
+      redirect_to("/", { :alert => the_reading.errors.full_messages.to_sentence })
     end
   end
 

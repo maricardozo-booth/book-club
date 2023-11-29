@@ -15,6 +15,10 @@ class MeetingsController < ApplicationController
 
     @the_meeting = matching_meetings.at(0)
 
+    matching_attendances = Attendance.where({ :meeting_id => the_id })
+
+    @list_of_attendances = matching_attendances.order({ :created_at => :desc })
+
     render({ :template => "meetings/show" })
   end
 

@@ -16,6 +16,12 @@
    </h1>
  </div>
 
+           <form action="/members/profile/<%= current_member.id%>" method="get">
+      <button>
+        Update my reading progress
+      </button>
+    </form>
+
 <hr>
 <h2>Next meeting: <%= @active_meeting.at(0).date.strftime("%D")  %>
 </h2>
@@ -55,7 +61,7 @@
 
 <li>
          <a href="/meetings/new">
-           Create new meeting
+           Co-chairs area
          </a>
 </li>
 

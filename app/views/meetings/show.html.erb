@@ -10,13 +10,17 @@
           Go back
         </a>
       </div>
-
+ <% if current_member.admin_status == true %>
       <div>
         <a href="/delete_meeting/<%= @the_meeting.id %>">
           Delete meeting
         </a>
       </div>
     </div>
+
+    <% else %>
+<div> </div>
+     <% end %>
 
     <dl>
       <dt>
@@ -33,11 +37,11 @@
         <%= @the_meeting.book.title %>
       </dd>
 
-      <dt>
-        Status
+            <dt>
+        Meeting notes
       </dt>
       <dd>
-        <%= @the_meeting.status %>
+        <%= @the_meeting.notes %>
       </dd>
 
       <dt>
@@ -47,57 +51,16 @@
         <%= @the_meeting.attendances_count %>
       </dd>
 
+      <dt>
+        Photos
+      </dt>
+      <dd>
+        <%= @the_meeting.photos %>
+      </dd>
     </dl>
   </div>
 </div>
 
 <hr>
 
-
-<div>
-  <div>
-    <h2>
-      Edit meeting
-    </h2>
-
-    <form action="/modify_meeting/<%= @the_meeting.id %>"  method="post" >
-      <div>
-        <label for="date_box">
-          Date
-        </label>
-
-        <input type="date" id="date_box" name="query_date" value="<%= @the_meeting.date %>">
-      </div>
-
-      <div>
-        <label for="book_id_box">
-          Book
-        </label>
-
-        <input type="text" id="book_id_box" name="query_book_id" value="<%= @the_meeting.book_id %>">
-      </div>
-
-      <div>
-        <label for="status_box">
-          Status
-        </label>
-
-        <input type="text" id="status_box" name="query_status" value="<%= @the_meeting.status %>">
-      </div>
-
-      <div>
-        <label for="attendances_count_box">
-          Attendances count
-        </label>
-
-        <input type="text" id="attendances_count_box" name="query_attendances_count" value="<%= @the_meeting.attendances_count %>">
-      </div>
-
-      <button>
-        Update meeting
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
+  

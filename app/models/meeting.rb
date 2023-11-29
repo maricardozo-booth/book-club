@@ -5,6 +5,8 @@
 #  id                :integer          not null, primary key
 #  attendances_count :integer
 #  date              :date
+#  notes             :string
+#  photos            :string
 #  status            :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
