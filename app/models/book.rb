@@ -14,9 +14,7 @@
 #  updated_at      :datetime         not null
 #
 class Book < ApplicationRecord
-  validates(:title, presence: true, uniqueness: true)
-  validates(:author, presence: true)
-  
+
   has_many  :readers, class_name: "Reading"
   
 end

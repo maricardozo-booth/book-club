@@ -1,0 +1,57 @@
+<div>
+  <div>
+    <h1>
+      List of all members
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          Username
+        </th>
+
+        <th>
+          Currently reading
+        </th>
+
+        <th>
+          Meetings attended
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_members.each do |a_member| %>
+      <tr>
+        <td>
+          <%= a_member.username %>
+        </td>
+
+        <td>
+          <%= a_member.id %>
+        </td>
+
+        <td>
+          <%= a_member.meetings_attended.count %>
+        </td>
+
+        <td>
+          <a href="/members/<%= a_member.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

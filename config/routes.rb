@@ -77,6 +77,8 @@ Rails.application.routes.draw do
   devise_for :members
   get("/members/:path_id", { :controller => "members", :action => "show" })
 
+  get("/members", { :controller => "members", :action => "index" })
+
   # Defines the root path route ("/")
   root "books#homepage"
 
