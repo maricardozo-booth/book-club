@@ -27,6 +27,8 @@ class MeetingsController < ApplicationController
 
     @list_of_meetings = matching_meetings.order({ :created_at => :desc })
 
+    @active_meetings = matching_meetings.where.not({ :status => "Past Meeting" })
+
     matching_books = Book.all
 
     @list_of_books = matching_books.order({ :created_at => :desc })

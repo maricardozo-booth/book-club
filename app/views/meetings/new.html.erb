@@ -110,12 +110,36 @@
       Book Club Meeting Notes
     </h2>
 <form action="/update_meeting" method="post">
+      <div>
+        <label for="meeting_id_box">
+          Meeting
+        </label>
 
+        <select id="meeting_id_box" name="query_book_id">
+        <% @active_meetings.each do |a_meeting| %>
+        <option value="<%= a_meeting.id %>"><%= a_meeting.date.strftime("%D") %></option>
+        <% end %>
+
+       </select>
+      </div>
            <div>
        <label for="attendance_box">
-         Attendance
+         Attendance count
        </label>
        <input type="number" id="attendance_box" name="query_attendances_count">
+     </div>
+
+       <div>
+       <label for="notes_box">
+         Notes
+       </label>
+       <input type="text" id="notes_box" name="query_notes">
+     </div>
+       <div>
+       <label for="photos_box">
+         Photo URL
+       </label>
+       <input type="text" id="photos_box" name="query_photos">
      </div>
 
       <div>
@@ -124,8 +148,8 @@
         </label>
 
         <select id="status_box" name="query_status">
-        <option value="Future meeting">Future meeting</option>
         <option value="Current meeting">Current meeting</option>
+        <option value="Past meeting">Past meeting</option>
         </select>
       </div>
 <hr>
