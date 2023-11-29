@@ -20,7 +20,7 @@
      <a href="/members/sign_up">Sign up</a>
      <% else %>
      <a href="/members/sign_out">Sign out</a>
-     <a href="/members/edit">Edit profile</a>
+     <a href="/members/<% current_member.id %>">My profile</a>
      <% end %>
    </nav>
 

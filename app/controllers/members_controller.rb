@@ -13,8 +13,13 @@ def show
 
   matching_members = Member.where({ :id => the_id })
 
-  @the_member = matching_readings.at(0)
+  @the_member = matching_members.at(0)
+
+  matching_readings = Reading.where({ :member_id => the_id })
+
+  @the_reading = matching_readings.at(0)
 
   render({ :template => "members/show" })
+
 end
 end
