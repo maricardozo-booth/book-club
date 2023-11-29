@@ -24,9 +24,9 @@ class AttendancesController < ApplicationController
 
     if the_attendance.valid?
       the_attendance.save
-      redirect_to("/attendances", { :notice => "Attendance created successfully." })
+      redirect_to("/", { :notice => "Attendance created successfully." })
     else
-      redirect_to("/attendances", { :alert => the_attendance.errors.full_messages.to_sentence })
+      redirect_to("/", { :alert => the_attendance.errors.full_messages.to_sentence })
     end
   end
 
