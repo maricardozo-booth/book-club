@@ -12,5 +12,5 @@
 #
 class Reading < ApplicationRecord
   belongs_to :member, counter_cache: true
-  belongs_to :read_book, class_name: "Book", foreign_key: "book_id", counter_cache: :readers_count
+  belongs_to :book_read, class_name: "Book", foreign_key: "book_id", counter_cache: :readers_count
 end

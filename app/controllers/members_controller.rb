@@ -17,7 +17,11 @@ def show
 
   matching_readings = Reading.where({ :member_id => the_id })
 
-  @the_reading = matching_readings.at(0)
+  @past_readings = matching_readings.where({ :status => "Past reading" })
+
+  matching_active_reading = matching_readings.where({ :status => "Currently reading" })
+
+  @active_reading = matching_active_reading.at(0)
 
   render({ :template => "members/show" })
 

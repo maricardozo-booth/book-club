@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of all meetings
+      Past Book Club meetings
     </h1>
   </div>
 </div>
@@ -24,9 +24,6 @@
           Book
         </th>
 
-        <th>
-          Status
-        </th>
 
         <th>
           Attendance
@@ -44,11 +41,7 @@
         </td>
 
         <td>
-          <%= a_meeting.book.title %>
-        </td>
-
-        <td>
-          <%= a_meeting.status %>
+          <a href="/books/<%= a_meeting.book_id %>"><%= a_meeting.book.title %>
         </td>
 
         <td>

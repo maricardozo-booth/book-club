@@ -1,8 +1,19 @@
 <div>
   <div>
+  <% if current_member == nil %>
+<div> ERROR</div>
+    <% else %>
+
     <h1>
-      Member #<%= @the_member.id %> details
+      <%= @the_member.username %> details
     </h1>
+
+          <div>
+      <div>
+        <a href="/members/edit">
+          Edit profile
+        </a>
+      </div>
 
     <div>
       <div>
@@ -14,60 +25,59 @@
 <div>
   <div>
     <h1>
-      Currrently reading
+      Currrently reading: <%= @active_reading.book_read.title %>
     </h1>
-
+      <dt>
+        Progress
+      </dt>
+      <dd>
+        <%= @active_reading.progress*100 %>%
+      </dd>
       <div>
-        <a href="/delete_reading/<%= @the_reading.id %>">
+        <a href="/delete_reading/<%= @active_reading.id %>">
           Delete reading
         </a>
       </div>
     </div>
 
-    <dl>
-      <dt>
-        Member
-      </dt>
-      <dd>
-        <%= @the_reading.member_id %>
-      </dd>
-
-      <dt>
-        Book
-      </dt>
-      <dd>
-        <%= @the_reading.book_id %>
-      </dd>
-
-      <dt>
-        Status
-      </dt>
-      <dd>
-        <%= @the_reading.status %>
-      </dd>
-
-      <dt>
-        Progress
-      </dt>
-      <dd>
-        <%= @the_reading.progress %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_reading.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_reading.updated_at) %> ago
-      </dd>
-    </dl>
   </div>
 </div>
 
+<div>
+   <h2>
+   My past readings
+   </h2>
+ <div>
+
+<table border="1">
+     <tr>
+       <th>
+         Title
+       </th>
+      <th>
+      
+       </th>
+     </tr>
+
+
+     <% @past_readings.each do |a_book| %>
+     <tr>
+
+       <td>
+         <%= a_book.book_read.title %>
+       </td>
+
+
+       <td>
+         <a href="/books/<%= a_book.id %>">
+           Show details
+         </a>
+       </td>
+     </tr>
+     <% end %>
+   </table>
+ </div>
+</div>
+
 <hr>
+     <% end %>
