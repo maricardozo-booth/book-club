@@ -35,7 +35,7 @@
 <h2> <center>Next meeting: <%= @active_meeting.at(0).date.strftime("%D")  %></center>
 </h2>
 <% if current_member == nil %>
-<div> Sign in to check-in on the next meeting. </div>
+<div><center> Sign in to check-in on the next meeting.</center> </div>
     <% else %>
    <center><form action="/insert_attendance" method="post">
         <input type="hidden" id="member_id_box" name="query_member_id" value="<% current_member.id%>">
