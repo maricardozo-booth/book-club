@@ -28,6 +28,10 @@ def show
   @list_of_meetings = matching_meetings.order({ :created_at => :desc })
   @active_meeting = matching_meetings.where({ :status => "Current meeting" })
 
+  matching_books = Book.all
+
+  @list_of_books = matching_books.order({ :created_at => :desc })
+
   render({ :template => "members/show" })
 
 end

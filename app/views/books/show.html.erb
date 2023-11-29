@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Book #<%= @the_book.id %> details
+        <%= @the_book.title %>
     </h1>
 
     <div>
@@ -11,20 +11,11 @@
         </a>
       </div>
 
-      <div>
-        <a href="/delete_book/<%= @the_book.id %>">
-          Delete book
-        </a>
-      </div>
-    </div>
-
-    <dl>
-      <dt>
-        Title
-      </dt>
       <dd>
-        <%= @the_book.title %>
-      </dd>
+
+<img src="<%= @the_book.cover_image_url %>" alt="The Vanishing Half cover">
+  </dd>
+    <dl>
 
       <dt>
         Status
@@ -95,7 +86,11 @@
           Status
         </label>
 
-        <input type="text" id="status_box" name="query_status" value="<%= @the_book.status %>">
+        <select id="status_box" name="query_status">
+        <option value="Past reading">Past reading</option>
+        <option value="Current reading">Current reading</option>
+       <option value="Future reading">Future reading</option>
+        </select>
       </div>
 
       <div>
@@ -122,13 +117,12 @@
         <input type="text" id="number_of_pages_box" name="query_number_of_pages" value="<%= @the_book.number_of_pages %>">
       </div>
 
-      <div>
-        <label for="readers_count_box">
-          Readers count
-        </label>
-
-        <input type="text" id="readers_count_box" name="query_readers_count" value="<%= @the_book.readers_count %>">
-      </div>
+           <div>
+       <label for="cover_box">
+       Book cover image URL
+       </label>
+       <input type="text" id="cover_box" name="query_cover_url">
+     </div>
 
       <button>
         Update book
@@ -136,5 +130,13 @@
     </form>
   </div>
 </div>
+
+<hr>
+      <div>
+        <a href="/delete_book/<%= @the_book.id %>">
+          Delete book
+        </a>
+      </div>
+    </div>
 
 <hr>

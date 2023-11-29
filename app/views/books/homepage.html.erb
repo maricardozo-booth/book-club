@@ -1,7 +1,7 @@
 <div>
  <div>
-   <h1>
-     Booth's Book Club
+   <center><h1>
+     Booth's Book Club</center>
    </h1>
  </div>
 </div>
@@ -11,32 +11,43 @@
 
 
  <div>
-   <h1>
+   <h1><center>
      This month's book: <%= @active_book.at(0).title %>
-   </h1>
- </div>
 
-           <form action="/members/profile/<%= current_member.id%>" method="get">
+           <dd>
+  </dd>
+    <dl></center>
+   </h1>
+   <center><img src="<%= @active_book.at(0).cover_image_url %>" alt="Book cover"></center>
+
+ </div>
+ </center>
+ <% if current_member == nil %>
+<div> Sign in to update your reading progress. </div>
+    <% else %>
+           <center><form action="/members/profile/<%= current_member.id%>" method="get">
       <button>
         Update my reading progress
       </button>
-    </form>
-
+    </form></center>
+<% end %>
 <hr>
-<h2>Next meeting: <%= @active_meeting.at(0).date.strftime("%D")  %>
+<h2> <center>Next meeting: <%= @active_meeting.at(0).date.strftime("%D")  %></center>
 </h2>
-
-    <form action="/insert_attendance" method="post">
+<% if current_member == nil %>
+<div> Sign in to check-in on the next meeting. </div>
+    <% else %>
+   <center><form action="/insert_attendance" method="post">
         <input type="hidden" id="member_id_box" name="query_member_id" value="<% current_member.id%>">
         <input type="hidden" id="meeting_id_box" name="query_meeting_id" value="<% @active_meeting.at(0).id%>">
       </div>
       <button>
         Check-in
       </button>
-    </form>
+    </form></center>
   </div>
 </div>
-
+<% end %>
 
 <hr>
 <h2>Menu</h2>
