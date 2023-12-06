@@ -4,7 +4,9 @@ class MeetingsController < ApplicationController
 
     @list_of_meetings = matching_meetings.order({ :created_at => :desc })
 
+    matching_books = Book.all
 
+    @expired_books = matching_books.where({ :status => "Past reading" })
     render({ :template => "meetings/index" })
   end
 

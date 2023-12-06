@@ -54,5 +54,70 @@
     </table>
   </div>
 </div>
+<div>
+   <h2>
+   Boothie Book Club - Book Repository
+   </h2>
+ <div>
+<div>
+
+
+<hr>
+<div>
+   <h2>
+   Past Book Club readings
+   </h2>
+ <div>
+
+   <table border="1">
+     <tr>
+       <th>
+         Title
+       </th>
+
+
+       <th>
+         Status
+       </th>
+
+
+       <th>
+         Readers
+       </th>
+
+
+
+       <th>
+       </th>
+     </tr>
+
+
+     <% @expired_books.each do |a_book| %>
+     <tr>
+
+       <td>
+         <%= a_book.title %>
+       </td>
+
+
+       <td>
+         <%= a_book.status %>
+       </td>
+
+
+       <td>
+         <%= a_book.readers_count %>
+       </td>
+
+       <td>
+         <a href="/books/<%= a_book.id %>">
+           Show details
+         </a>
+       </td>
+     </tr>
+     <% end %>
+   </table>
+ </div>
+</div>
 
 <hr>

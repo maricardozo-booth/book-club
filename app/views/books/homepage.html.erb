@@ -25,21 +25,21 @@
  <% if current_member == nil %>
      <center><div> Sign in to update your reading progress. </div></center>
     <% else %>
-      <center><form action="/members/profile/<%= current_member.id%>" method="get">
+      <center><form action="/members/profile/<%= current_member.id %>" method="get">
       <button>
         Update my reading progress
       </button>
     </form></center>
 <% end %>
 <hr>
-<h2> <center>Next meeting: <%= @active_meeting.at(0).date.strftime("%D")  %></center>
+<h2> <center>Next meeting: <%= @active_meeting.at(0).date.strftime("%D") %></center>
 </h2>
 <% if current_member == nil %>
 <div><center> Sign in to check-in on the next meeting.</center> </div>
     <% else %>
    <center><form action="/insert_attendance" method="post">
-        <input type="hidden" id="member_id_box" name="query_member_id" value="<% current_member.id%>">
-        <input type="hidden" id="meeting_id_box" name="query_meeting_id" value="<% @active_meeting.at(0).id%>">
+        <input type="hidden" id="member_id_box" name="query_member_id" value="<%= current_member.id %>">
+        <input type="hidden" id="meeting_id_box" name="query_meeting_id" value="<%= @active_meeting.at(0).id %>">
       </div>
       <button>
         Check-in

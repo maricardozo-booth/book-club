@@ -17,15 +17,15 @@
           Username
         </th>
 
-        <th>
-          Currently reading
-        </th>
 
         <th>
           Meetings attended
         </th>
-
         <th>
+        Currently reading
+        </th>
+        <th>
+        Details
         </th>
       </tr>
 
@@ -38,6 +38,10 @@
 
         <td>
           <%= a_member.meetings_attended.count %>
+        </td>
+
+        <td>
+          <%= a_member.readings.where({ :status => "Currently reading" }).at(0).book_read.title %>
         </td>
 
         <td>

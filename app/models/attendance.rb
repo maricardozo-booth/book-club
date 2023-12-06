@@ -10,7 +10,6 @@
 #
 class Attendance < ApplicationRecord
   validates(:member_id, :meeting_id, presence: true)
-  validates(:meeting_id, uniqueness: true)
 
   belongs_to :member, counter_cache: :meeting_attended_count
   belongs_to :monthly_meeting, class_name: "Meeting", foreign_key: "meeting_id", counter_cache: true
