@@ -52,12 +52,11 @@
        </label>
        <input type="text" id="cover_box" name="query_cover_url">
      </div>
-
+       <input type="hidden" id="status_box" name="query_status" value="Future reading">
      <button>
        Create book
      </button>
    </form>
-
    
  </div>
 </div>
@@ -117,12 +116,12 @@
           Meeting
         </label>
 
-        <select id="meeting_id_box" name="query_book_id">
+        <select id="meeting_id_box" name="query_meeting_id">
         <% @active_meetings.each do |a_meeting| %>
         <option value="<%= a_meeting.id %>"><%= a_meeting.date.strftime("%D") %></option>
-        <% end %>
-
        </select>
+                  <% end %>
+               <input type="hidden" id="date_box" name="query_date" value="<%= a_meeting.date>">
       </div>
            <div>
        <label for="attendance_box">

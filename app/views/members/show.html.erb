@@ -28,8 +28,8 @@
       Currrently reading: <%= @active_reading.book_read.title %>
     </h1>
       <div>
-        My progress: <% @percentage = @active_reading.progress %>
-        <%= @percentage*100 %>%
+        My progress: <% @progress = @active_reading.progress %>
+        <%= @progress %>/<%= @active_reading.book_read.number_of_pages %>
       </div>
 
         <form action="/modify_reading/<%= @active_reading.id %>" method="post">
@@ -37,7 +37,7 @@
         <input type="hidden" id="book_id_box" name="query_book_id" value="<%= @active_reading.book_read.id %>">
         <input type="hidden" id="status_box" name="query_status" value="Currently reading">
         <fieldset class="form-group">
-        <input type="range" class="form-range" min="0" max="1" step="0.05" id="progress_box" name="query_progress">
+        <input type="range" class="form-range" min="0" max="@active_reading.book_read.number_of_pages" step="1" id="progress_box" name="query_progress">
     </fieldset>
       </div>
       <button>

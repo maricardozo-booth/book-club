@@ -17,6 +17,6 @@ class Book < ApplicationRecord
   validates(:author, :title, :genre, :number_of_pages, :cover_image_url, presence: true)
   validates(:title, uniqueness: true)
 
-  has_many  :readers, class_name: "Reading"
+has_many  :readers, class_name: "Reading"
   
 end

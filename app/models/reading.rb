@@ -3,7 +3,7 @@
 # Table name: readings
 #
 #  id         :integer          not null, primary key
-#  progress   :float
+#  progress   :integer
 #  status     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

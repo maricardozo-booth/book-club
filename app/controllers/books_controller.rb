@@ -45,11 +45,11 @@ class BooksController < ApplicationController
   def create
     the_book = Book.new
     the_book.title = params.fetch("query_title")
-    the_book.status = params.fetch("query_status")
     the_book.author = params.fetch("query_author")
+    the_book.status = params.fetch("query_status")
     the_book.genre = params.fetch("query_genre")
     the_book.number_of_pages = params.fetch("query_number_of_pages")
-    the_book.readers_count = params.fetch("query_readers_count")
+    the_book.readers_count = "0"
     the_book.cover_image_url = params.fetch("query_cover_url")
     
     if the_book.valid?
@@ -58,6 +58,7 @@ class BooksController < ApplicationController
     else
       redirect_to("/books", { :alert => the_book.errors.full_messages.to_sentence })
     end
+
   end
 
   def update

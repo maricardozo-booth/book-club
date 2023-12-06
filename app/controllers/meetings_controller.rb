@@ -41,18 +41,18 @@ class MeetingsController < ApplicationController
     the_meeting.date = params.fetch("query_date")
     the_meeting.book_id = params.fetch("query_book_id")
     the_meeting.status = params.fetch("query_status")
-    the_meeting.attendances_count = params.fetch("query_attendances_count")
+    the_meeting.attendances_count = "0"
 
     if the_meeting.valid?
       the_meeting.save
-      redirect_to("/meetings", { :notice => "Meeting created successfully." })
+      redirect_to("/meetings/new", { :notice => "Meeting created successfully." })
     else
       redirect_to("/meetings", { :alert => the_meeting.errors.full_messages.to_sentence })
     end
   end
 
   def update
-    the_id = params.fetch("path_id")
+    the_id = params.fetch("query_meeting_id")
     the_meeting = Meeting.where({ :id => the_id }).at(0)
 
     the_meeting.date = params.fetch("query_date")
