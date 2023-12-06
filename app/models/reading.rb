@@ -12,6 +12,7 @@
 #
 class Reading < ApplicationRecord
   validates(:member_id, :book_id, presence: true)
+  validates(:book_id, uniqueness: true)
 
   belongs_to :member, counter_cache: true
   belongs_to :book_read, class_name: "Book", foreign_key: "book_id", counter_cache: :readers_count

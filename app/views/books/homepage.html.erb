@@ -23,9 +23,9 @@
  </div>
  </center>
  <% if current_member == nil %>
-     <center><div> Sign in to update your reading progress. </div>
+     <center><div> Sign in to update your reading progress. </div></center>
     <% else %>
-      <form action="/members/profile/<%= current_member.id%>" method="get">
+      <center><form action="/members/profile/<%= current_member.id%>" method="get">
       <button>
         Update my reading progress
       </button>

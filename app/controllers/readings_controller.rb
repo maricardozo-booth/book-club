@@ -26,10 +26,13 @@ class ReadingsController < ApplicationController
 
     if the_reading.valid?
       the_reading.save
-      redirect_to("/readings", { :notice => "Reading created successfully." })
+      other_readings = Reading.where({ :member_id => current_member.id }).where.not({ :id => the_reading.id })
+      other_readings.update_all({ :status => 'Past reading' })
+      redirect_to("/members/profile/#{current_member.id}", { :notice => "Reading created successfully."} )
     else
-      redirect_to("/readings", { :alert => the_reading.errors.full_messages.to_sentence })
+      redirect_to("/members/profile/#{current_member.id}", { :alert => the_reading.errors.full_messages.to_sentence })
     end
+
   end
 
   def update
@@ -43,9 +46,9 @@ class ReadingsController < ApplicationController
 
     if the_reading.valid?
       the_reading.save
-      redirect_to("/members/profile/:current_member.id", { :notice => "Reading updated successfully."} )
+      redirect_to("/members/profile/#{current_member.id}", { :notice => "Reading updated successfully."} )
     else
-      redirect_to("/members/profile/:current_member.id", { :alert => the_reading.errors.full_messages.to_sentence })
+      redirect_to("/members/profile/#{current_member.id}", { :alert => the_reading.errors.full_messages.to_sentence })
     end
   end
 
@@ -54,7 +57,7 @@ class ReadingsController < ApplicationController
     the_reading = Reading.where({ :id => the_id }).at(0)
 
     the_reading.destroy
+    redirect_to("/members/profile/#{current_member.id}", { :notice => "Reading deleted successfully."} )
 
-    redirect_to("/readings", { :notice => "Reading deleted successfully."} )
   end
 end
