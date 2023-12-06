@@ -23,9 +23,9 @@
  </div>
  </center>
  <% if current_member == nil %>
-<div> Sign in to update your reading progress. </div>
+     <center><div> Sign in to update your reading progress. </div>
     <% else %>
-           <center><form action="/members/profile/<%= current_member.id%>" method="get">
+      <form action="/members/profile/<%= current_member.id%>" method="get">
       <button>
         Update my reading progress
       </button>
@@ -48,35 +48,5 @@
   </div>
 </div>
 <% end %>
-
-<hr>
-<h2>Menu</h2>
-
-<li>
-         <a href="/meetings">
-           Past meetings and books
-         </a>
-         
-</li>
-
-<li>
-         <a href="/members">
-           Book Club Members
-         </a>
-         
-</li>
-
- <% if current_member == nil %>
-<div> </div>
-    <% else %>
-
-<li>
-         <a href="/meetings/new">
-           Co-chairs area
-         </a>
-</li>
-
-     <% end %>
-
 
 <hr>
