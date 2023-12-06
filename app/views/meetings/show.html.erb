@@ -62,5 +62,46 @@
 </div>
 
 <hr>
+<div>
+    <h2>
+      Update Book Club Meeting Notes
+    </h2>
 
+<form action="/update_meeting" method="post">
+<input type="hidden" id="book_box" name="query_book_id" value="<% @the_meeting.book_id %>">
+<input type="hidden" id="date_box" name="query_date" value="<% @the_meeting.date %>">
+           <div>
+       <label for="attendance_box">
+      Attendance count
+       </label>
+       <input type="number" id="attendance_box" name="query_attendances_count">
+     </div>
+
+       <div>
+       <label for="notes_box">
+         Notes
+       </label>
+       <input type="text" id="notes_box" name="query_notes">
+     </div>
+       <div>
+       <label for="photos_box">
+         Photo URL
+       </label>
+       <input type="text" id="photos_box" name="query_photos">
+     </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <select id="status_box" name="query_status">
+        <option value="Current meeting">Current meeting</option>
+        <option value="Past meeting">Past meeting</option>
+        </select>
+      </div>
+            <button>
+        Update meeting
+      </button>
+      </form>
   

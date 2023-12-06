@@ -52,19 +52,21 @@ class MeetingsController < ApplicationController
   end
 
   def update
-    the_id = params.fetch("query_meeting_id")
-    the_meeting = Meeting.where({ :id => the_id }).at(0)
+    the_id = params.fetch("path_id")
+    @the_meeting = Meeting.where({ :id => the_id }).at(0)
 
-    the_meeting.date = params.fetch("query_date")
-    the_meeting.book_id = params.fetch("query_book_id")
-    the_meeting.status = params.fetch("query_status")
-    the_meeting.attendances_count = params.fetch("query_attendances_count")
+    @the_meeting.date = params.fetch("query_date")
+    @the_meeting.book_id = params.fetch("query_book_id")
+    @the_meeting.status = params.fetch("query_status")
+    @the_meeting.attendances_count = params.fetch("query_attendances_count")
+    @the_meeting.notes = params.fetch("query_notes")
+    @the_meeting.photos= params.fetch("query_photos")
 
-    if the_meeting.valid?
-      the_meeting.save
-      redirect_to("/meetings/#{the_meeting.id}", { :notice => "Meeting updated successfully."} )
+    if @the_meeting.valid?
+      @the_meeting.save
+      redirect_to("/meetings/#{@the_meeting.id}", { :notice => "Meeting updated successfully."} )
     else
-      redirect_to("/meetings/#{the_meeting.id}", { :alert => the_meeting.errors.full_messages.to_sentence })
+      redirect_to("/meetings/#{@the_meeting.id}", { :alert => @the_meeting.errors.full_messages.to_sentence })
     end
   end
 
