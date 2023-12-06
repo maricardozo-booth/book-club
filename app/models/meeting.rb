@@ -13,6 +13,8 @@
 #  book_id           :integer
 #
 class Meeting < ApplicationRecord
+  validates(:date, :book_id, :status, presence: true)
+ 
   has_many  :attendances, dependent: :destroy
   belongs_to :book, class_name: "Book", foreign_key: "book_id"
 end

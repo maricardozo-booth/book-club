@@ -27,6 +27,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+validates(:username, presence: true)
+
 has_many  :meetings_attended, class_name: "Attendance"
 has_many  :readings, dependent: :destroy
 

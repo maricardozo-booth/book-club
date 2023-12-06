@@ -54,7 +54,7 @@ class BooksController < ApplicationController
     
     if the_book.valid?
       the_book.save
-      redirect_to("/books", { :notice => "Book created successfully." })
+      redirect_to("/books/#{the_book.id}", { :notice => "Book created successfully." })
     else
       redirect_to("/books", { :alert => the_book.errors.full_messages.to_sentence })
     end

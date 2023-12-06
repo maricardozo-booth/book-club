@@ -31,16 +31,19 @@
         My progress: <%= @active_reading.progress*100 %>%
       </div>
 
-           <form action="/update_reading" method="post">
-        <input type="hidden" id="member_id_box" name="query_member_id" value="<% current_member.id%>">
-        <input type="hidden" id="meeting_id_box" name="query_meeting_id" value="<% @active_meeting.at(0).id%>">
+        <form action="/modify_reading/<%= @active_reading.id%>" method="post">
+        <input type="hidden" id="member_id_box" name="query_member_id" value="<%= current_member.id%>">
+        <input type="hidden" id="book_id_box" name="query_book_id" value="<%= @active_reading.book_read.id%>">
+        <input type="hidden" id="status_box" name="query_status" value="Currently reading">
         <input type="number" id="progress_box" name="query_progress">
       </div>
       <button>
         Update my Progress
       </button>
     </form>
-        <form>
+    
+    <hr>
+        <form >
           <div>
         <label for="status_box">
           Currently reading
