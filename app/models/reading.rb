@@ -11,7 +11,7 @@
 #  member_id  :integer
 #
 class Reading < ApplicationRecord
-  validates(:member_id, :book_id, presence: true)
+  validates(:member_id, :book_id, presence: { message: "must be given please" })
   validates(:book_id, uniqueness: true)
 
   belongs_to :member, counter_cache: true
