@@ -13,7 +13,7 @@
 
       <dd>
 
-<img src="<%= @the_book.cover_image_url %>" alt="The Vanishing Half cover">
+<img src="<%= @the_book.cover_image_url %>" alt="Book cover">
   </dd>
     <dl>
 
@@ -72,25 +72,13 @@
       Edit book
     </h2>
 
-    <form action="/modify_book/<%= @the_book.id %>"  method="post" >
+    <form action="/modify_book/<%= @the_book.id %>" method="post">
       <div>
         <label for="title_box">
           Title
         </label>
 
         <input type="text" id="title_box" name="query_title" value="<%= @the_book.title %>">
-      </div>
-
-      <div>
-        <label for="status_box">
-          Status
-        </label>
-
-        <select id="status_box" name="query_status">
-        <option value="Past reading">Past reading</option>
-        <option value="Current reading">Current reading</option>
-       <option value="Future reading">Future reading</option>
-        </select>
       </div>
 
       <div>
@@ -102,12 +90,25 @@
       </div>
 
       <div>
-        <label for="genre_box">
-          Genre
-        </label>
-
-        <input type="text" id="genre_box" name="query_genre" value="<%= @the_book.genre %>">
-      </div>
+       <label for="genre_box">
+         Genre
+       </label>
+        <select id="genre_box" name="query_genre">
+        <option value="Fantasy">Fantasy</option>
+        <option value="Science Fiction">Science Fiction</option>
+        <option value="Mystery">Mystery</option>
+        <option value="Romance">Romance</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Historical Fiction">Historical Fiction</option>
+        <option value="Non-Fiction">Non-Fiction</option>
+        <option value="Horror">Horror</option>
+        <option value="Adventure">Adventure</option>
+        <option value="Dystopian">Dystopian</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Drama">Drama</option>
+        <option value="Poetry">Poetry</option>
+        </select>
+        </div>
 
       <div>
         <label for="number_of_pages_box">
@@ -123,6 +124,17 @@
        </label>
        <input type="text" id="cover_box" name="query_cover_url">
      </div>
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <select id="status_box" name="query_status">
+        <option value="Past reading">Past reading</option>
+        <option value="Current reading">Current reading</option>
+        <option value="Potential Club reading">Potential Club reading</option>
+        </select>
+      </div>
 
       <button>
         Update book

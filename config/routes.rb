@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # Routes for the Vote resource:
 
+  post("/insert_poll", { :controller => "books", :action => "poll_update" })
+
   # CREATE
   post("/insert_vote", { :controller => "votes", :action => "create" })
           

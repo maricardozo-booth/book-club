@@ -35,6 +35,8 @@ class MeetingsController < ApplicationController
 
     @list_of_books = matching_books.order({ :created_at => :desc })
 
+    @potential_books = matching_books.where({ :status => "Potential Club reading" })
+
     matching_votes = Vote.all
 
     @list_of_votes = matching_votes.order({ :created_at => :desc })

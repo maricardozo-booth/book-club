@@ -49,7 +49,6 @@ class BooksController < ApplicationController
     the_book.status = params.fetch("query_status")
     the_book.genre = params.fetch("query_genre")
     the_book.number_of_pages = params.fetch("query_number_of_pages")
-    the_book.readers_count = "0"
     the_book.cover_image_url = params.fetch("query_cover_url")
     
     if the_book.valid?
@@ -70,7 +69,6 @@ class BooksController < ApplicationController
     the_book.author = params.fetch("query_author")
     the_book.genre = params.fetch("query_genre")
     the_book.number_of_pages = params.fetch("query_number_of_pages")
-    the_book.readers_count = params.fetch("query_readers_count")
 
     if the_book.valid?
       the_book.save
@@ -78,6 +76,24 @@ class BooksController < ApplicationController
     else
       redirect_to("/books/#{the_book.id}", { :alert => the_book.errors.full_messages.to_sentence })
     end
+  end
+
+  def poll_update
+    matching_books = Book.all
+
+    @potential_books = matching_books.where({ :status => "Potential Club reading" })
+
+    book_ids = params.fetch("query_book_ids")
+    if book_ids.is_a? String
+      the_book = Book.where({ :id => book_ids })
+      the_book.update({ :status => "Current poll" })
+    else 
+    book_ids.each do 
+      the_book = Book.where({ :id => book_ids }).at(0)
+      the_book.update({ :status => "Current poll" })
+    end 
+  end 
+  redirect_to("/meetings/new", { :notice => "Poll created successfully."} )
   end
 
   def destroy
