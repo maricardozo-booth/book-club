@@ -34,6 +34,10 @@ class MeetingsController < ApplicationController
     matching_books = Book.all
 
     @list_of_books = matching_books.order({ :created_at => :desc })
+
+    matching_votes = Vote.all
+
+    @list_of_votes = matching_votes.order({ :created_at => :desc })
     
     render({ :template => "meetings/new" })
   end

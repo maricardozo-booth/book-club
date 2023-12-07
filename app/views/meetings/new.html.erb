@@ -63,7 +63,7 @@
 <hr>
   <div>
     <h2>
-      Create New Book Club meeting
+      Create new Book Club meeting
     </h2>
 
 <form action="/insert_meeting" method="post">
@@ -107,3 +107,42 @@
 </div>
 <hr>
 
+   <h2>
+     Current poll
+   </h2>
+
+   <%= pie_chart Vote.group(:book_id).count %>
+
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Book
+        </th>
+
+        <th>
+          Member
+        </th>
+      <% @list_of_votes.each do |a_vote| %>
+      <tr>
+        <td>
+          <%= a_vote.id %>
+        </td>
+
+        <td>
+          <%= a_vote.book_id %>
+        </td>
+
+        <td>
+          <%= a_vote.member_id %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

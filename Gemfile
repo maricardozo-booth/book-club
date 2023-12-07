@@ -83,6 +83,7 @@ gem "http"
 gem "sqlite3", "~> 1.4"
 gem "table_print"
 gem "ruby-openai"
+gem "chartkick"
 
 group :development do
   gem "annotate"

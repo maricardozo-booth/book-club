@@ -1,7 +1,7 @@
 <div>
   <div>
   <% if current_member == nil %>
-<div> ERROR</div>
+<div>Ops! You shouldn't be here. Go back to <a href="/">Homepage</a></div>
     <% else %>
 
     <h1>
@@ -23,13 +23,18 @@
       </div>
 
 <div>
+ <% if @active_reading == nil %>
+     <h1>
+      Start reading! Update your current reading below.
+    </h1>
+        <% else %>
   <div>
     <h1>
       Currrently reading: <%= @active_reading.book_read.title %>
     </h1>
       <div>
         My progress: <% @progress = @active_reading.progress %>
-        <%= @progress %>/<%= @active_reading.book_read.number_of_pages %>
+        <%= @progress %>/<%= @active_reading.book_read.number_of_pages %> pages
       </div>
 
         <form action="/modify_reading/<%= @active_reading.id %>" method="post">
@@ -44,7 +49,7 @@
         Update my Progress
       </button>
     </form>
-    
+    <% end %>
     <hr>
         <form action="/insert_reading/" method="post">
         <input type="hidden" id="member_id_box" name="query_member_id" value="<%= current_member.id %>">

@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Vote resource:
+
+  # CREATE
+  post("/insert_vote", { :controller => "votes", :action => "create" })
+          
+  # READ
+  get("/votes", { :controller => "votes", :action => "index" })
+  
+  # UPDATE
+  
+  post("/modify_vote/:path_id", { :controller => "votes", :action => "update" })
+  
+  # DELETE
+  get("/delete_vote/:path_id", { :controller => "votes", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Reading resource:
 
   # CREATE

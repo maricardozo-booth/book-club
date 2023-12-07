@@ -7,50 +7,52 @@
 </div>
 
 <hr>
-
-<hr>
 <div>
   <div>
-    <table border="1">
-      <tr>
-        <th>
-          Username
-        </th>
-
-
-        <th>
-          Meetings attended
-        </th>
-        <th>
-        Currently reading
-        </th>
-        <th>
-        Details
-        </th>
-      </tr>
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col"> </th>
+      <th scope="col">Username</th>
+      <th scope="col">Meetings attended</th>
+      <th scope="col">Currently reading</th>
+        <th scope="col">Profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-active">
 
       <% @list_of_members.each do |a_member| %>
-      <tr>
-        <td>
+
+        <th scope="row">
+          <img href="<%= a_member.profile_picture %>">
+        </th>
+
+
+      <th scope="row">
           <%= a_member.username %>
-        </td>
-      
+        </th>
+  
 
-        <td>
+     <th scope="row">
           <%= a_member.meetings_attended.count %>
-        </td>
+        </th>
 
-        <td>
+      <th scope="row"><% if a_member.readings.where({ :status => "Currently reading" }).at(0) == nil %>
+      <%= a_member.username %> hasn't started reading yet.
+      <% else %>
           <%= a_member.readings.where({ :status => "Currently reading" }).at(0).book_read.title %>
-        </td>
+          <% end %>
+        </th>
 
         <td>
           <a href="/members/<%= a_member.id %>">
-            Show details
+            Go to profile
           </a>
         </td>
       </tr>
       <% end %>
+        </tbody>
     </table>
   </div>
 </div>

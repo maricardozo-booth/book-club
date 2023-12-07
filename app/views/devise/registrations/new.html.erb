@@ -14,8 +14,13 @@
     <%= f.text_field :username, autofocus: true %>
   </div>
 
+      <div class="field">
+    <%= f.label :profile_picture %> URL<br />
+    <%= f.text_field :profile_picture, autofocus: true %>
+  </div>
+
         <div class="checkbox">
-    <%= f.label :admin_status %><br />
+    <%= f.label :admin_status %> (Are you a co-chair?)<br />
     <%= f.check_box :admin_status, autofocus: true %>
   </div>
 

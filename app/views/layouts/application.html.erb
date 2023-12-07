@@ -11,65 +11,65 @@
     <link rel="stylesheet" href="/bootstrap.css">
   </head>
 
-  <body>
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
- <div class="container-fluid">
-   <a class="navbar-brand" href="#">Book Club</a>
-   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-     <span class="navbar-toggler-icon"></span>
-   </button>
-   <div class="collapse navbar-collapse" id="navbarColor02">
-     <ul class="navbar-nav me-auto">
-       <li class="nav-item">
-         <a class="nav-link active" href="/">Homepage
-           <span class="visually-hidden">(current)</span>
-         </a>
-      
+       <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+       <div class="container-fluid">
+       <a class="navbar-brand" href="#">Book Club</a>
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
 
-       <li class="nav-item">
-         <a class="nav-link" href="/meetings">Past meetings and books</a>
-       </li>
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">Homepage
+          <span class="visually-hidden">(current)</span>
+        </a></li>
 
+     <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/meetings">Past meetings and books</a>
+      </li>
+
+
+             <li class="nav-item">
+        <a class="nav-link" href="/members">Member roster</a>
+      </li>
+
+
+      <% if current_member == nil %>
+      <li class="nav-item">
+        <a class="nav-link" href="/members/sign_up">Sign up</a>
+      </li>
               <li class="nav-item">
-         <a class="nav-link" href="/members">Member roster</a>
-       </li>
-
-
-       <% if current_member == nil %>
-       <li class="nav-item">
-         <a class="nav-link" href="/members/sign_up">Sign up</a>
-       </li>
+        <a class="nav-link" href="/members/sign_in">Sign in</a>
+      </li>
+  <% else %>
+        <li class="nav-item">
+        <a class="nav-link" href="/members/profile/<%= current_member.id %>">My profile</a>
+      </li>
                <li class="nav-item">
-         <a class="nav-link" href="/members/sign_in">Sign in</a>
-       </li>
-   <% else %>
-         <li class="nav-item">
-         <a class="nav-link" href="/members/profile/<%= current_member.id %>">My profile</a>
-       </li>
-                <li class="nav-item">
-         <a class="nav-link" href="/meetings/new">Co-chairs area</a>
-       </li>
-         <li class="nav-item">
-         <a class="nav-link" href="/members/sign_out">Sign out</a>
-       </li>
-     <% end %>
+        <a class="nav-link" href="/meetings/new">Co-chairs area</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/members/sign_out">Sign out</a>
+      </li>
+    <% end %>
 
-             <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </li>
-     </ul>
-   </div>
- </div>
-</nav>
+      </ul>
+    </div>
+</div>
+   </nav>
 
-
+  <body>
     <%= yield %>
   </body>
 </html>
