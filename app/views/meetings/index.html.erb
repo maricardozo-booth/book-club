@@ -6,29 +6,30 @@
   </div>
 </div>
 
-<hr>
 
 <div>
   <div>
-    <table border="1">
-      <tr>
-
-        <th>
+    <table class="table table-hover">
+      <thead>
+    <tr class="table-active">
+        <th scope="col">
           Date
         </th>
 
-        <th>
-          Book
+        <th scope="col">
+          Book discussed
         </th>
 
 
-        <th>
+        <th scope="col">
           Attendance
         </th>
 
-        <th>
+        <th scope="col">
         </th>
-      </tr>
+    </tr>
+  </thead>
+  <tbody>
 
       <% @list_of_meetings.each do |a_meeting| %>
       <tr>
@@ -65,28 +66,30 @@
    </h2>
  <div>
 
-   <table border="1">
-     <tr>
-       <th>
+   <table class="table table-hover">
+      <thead>
+    <tr class="table-active">
+        <th scope="col">
          Title
        </th>
 
 
-       <th>
+       <th scope="col">
          Status
        </th>
 
 
-       <th>
+       <th scope="col">
          Readers
        </th>
 
 
 
-       <th>
+       <th scope="col">
        </th>
      </tr>
-
+  </thead>
+  <tbody>
 
      <% @expired_books.each do |a_book| %>
      <tr>
@@ -102,7 +105,7 @@
 
 
        <td>
-         <%= a_book.readers_count %>
+         <%= a_book.readers.count %>
        </td>
 
        <td>
@@ -112,8 +115,7 @@
        </td>
      </tr>
      <% end %>
+       </tbody>
    </table>
  </div>
 </div>
-
-<hr>

@@ -7,7 +7,6 @@
 #  cover_image_url :string
 #  genre           :string
 #  number_of_pages :integer
-#  readers_count   :integer
 #  status          :string
 #  title           :string
 #  created_at      :datetime         not null

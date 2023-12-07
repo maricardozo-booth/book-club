@@ -39,8 +39,8 @@ class ReadingsController < ApplicationController
     the_id = params.fetch("path_id")
     the_reading = Reading.where({ :id => the_id }).at(0)
 
-    the_reading.member_id = params.fetch("query_member_id")
     the_reading.book_id = params.fetch("query_book_id")
+    the_reading.member_id = params.fetch("query_member_id")
     the_reading.status = params.fetch("query_status")
     the_reading.progress = params.fetch("query_progress")
 

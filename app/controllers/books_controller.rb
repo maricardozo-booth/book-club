@@ -34,6 +34,8 @@ class BooksController < ApplicationController
 
     @future_books = matching_books.where({ :status => "Future reading" })
 
+    @poll_books = matching_books.where({ :status => "Current poll" })
+
     matching_meetings = Meeting.all
 
     @list_of_meetings = matching_meetings.order({ :created_at => :desc })

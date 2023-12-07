@@ -25,16 +25,6 @@
           <span class="visually-hidden">(current)</span>
         </a></li>
 
-     <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-</li>
-
       <li class="nav-item">
         <a class="nav-link" href="/meetings">Past meetings and books</a>
       </li>
@@ -56,9 +46,15 @@
         <li class="nav-item">
         <a class="nav-link" href="/members/profile/<%= current_member.id %>">My profile</a>
       </li>
+       <% if current_member.admin_status == true %>
                <li class="nav-item">
         <a class="nav-link" href="/meetings/new">Co-chairs area</a>
       </li>
+        <% else %>
+        <li>
+        </li>
+            <% end %>
+            
         <li class="nav-item">
         <a class="nav-link" href="/members/sign_out">Sign out</a>
       </li>
@@ -72,4 +68,10 @@
   <body>
     <%= yield %>
   </body>
+
+  <footer>
+  <hr>
+  <center><p>Author: Mariana Cardozo - App Development Fall/23</p>
+  <p><a href="mailto:mcardozo@chicagobooth.edu">mcardozo@chicagobooth.edu</a></p></center>
+</footer>
 </html>
