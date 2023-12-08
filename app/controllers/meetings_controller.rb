@@ -10,7 +10,7 @@ class MeetingsController < ApplicationController
 
     matching_books = Book.all
 
-    @expired_books = matching_books.where({ :status => "Past Club reading" })
+    @expired_books = matching_books.where({ :status => "Past Club read" })
     render({ :template => "meetings/index" })
 
   end

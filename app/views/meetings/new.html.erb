@@ -35,6 +35,7 @@
         <option value="Non-Fiction">Non-Fiction</option>
         <option value="Horror">Horror</option>
         <option value="Adventure">Adventure</option>
+        <option value="Biography">Biography</option>
         <option value="Dystopian">Dystopian</option>
         <option value="Comedy">Comedy</option>
         <option value="Drama">Drama</option>
@@ -114,8 +115,8 @@
       <div>
         <label for="book_id_box">
           Most-voted books (only udpates after poll is closed)
-        </label>
-
+        </label></div>
+<div>
         <select id="book_id_box" name="query_book_id">
         <% @chosen_books.each do |a_book| %>
         <option value="<%= a_book.id %>"><%= a_book.title %></option>

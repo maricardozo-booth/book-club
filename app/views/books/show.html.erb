@@ -99,6 +99,7 @@
         <option value="Non-Fiction">Non-Fiction</option>
         <option value="Horror">Horror</option>
         <option value="Adventure">Adventure</option>
+        <option value="Biography">Biography</option>
         <option value="Dystopian">Dystopian</option>
         <option value="Comedy">Comedy</option>
         <option value="Drama">Drama</option>
@@ -118,7 +119,7 @@
        <label for="cover_box">
        Book cover image URL
        </label>
-       <input type="text" id="cover_box" name="query_cover_url">
+       <input type="text" id="cover_box" name="query_cover_url" value="<%= @the_book.cover_image_url %>">
      </div>
       <div>
         <label for="status_box">
