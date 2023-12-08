@@ -116,6 +116,6 @@ class BooksController < ApplicationController
 
     the_book.destroy
 
-    redirect_to("/books", { :notice => "Book deleted successfully."} )
+    redirect_to("/meetings", { :notice => "Book deleted successfully."} )
   end
 end 

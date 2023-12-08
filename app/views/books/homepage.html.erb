@@ -15,14 +15,14 @@
  <div>
    <h2><center>
      The club is currently reading:<dd>
-     <a href="books/<%= @active_book.at(0).id %>"><%= @active_book.at(0).title %></a>
+     <a href="books/<%= @active_meeting.book_associated.title %>"><%= @active_meeting.book_associated.title %></a>
 
            
   </dd>
     <dl></center>
     
    </h2>
-   <center><img src="<%= @active_book.at(0).cover_image_url %>" alt="Book cover" width="230" 
+   <center><img src="<%= @active_meeting.book_associated.cover_image_url %>" alt="Book cover" width="230" 
      height="auto"></center>
 
  </div>

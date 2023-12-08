@@ -39,7 +39,7 @@
         </th>
 
       <th scope="row"><% if a_member.readings.where({ :status => "Currently reading" }).at(0) == nil %>
-      <%= a_member.username %> hasn't started reading yet.
+      <%= a_member.username %> is not reading at the moment.
       <% else %>
           <%= a_member.readings.where({ :status => "Currently reading" }).at(0).book_read.title %>
           <% end %>
