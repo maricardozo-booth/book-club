@@ -27,7 +27,7 @@ class ReadingsController < ApplicationController
     if the_reading.valid?
       the_reading.save
       other_readings = Reading.where({ :member_id => current_member.id }).where.not({ :id => the_reading.id })
-      other_readings.update_all({ :status => 'Past reading' })
+      other_readings.update_all({ :status => 'Past read' })
       redirect_to("/members/profile/#{current_member.id}", { :notice => "Reading created successfully."} )
     else
       redirect_to("/members/profile/#{current_member.id}", { :alert => the_reading.errors.full_messages.to_sentence })

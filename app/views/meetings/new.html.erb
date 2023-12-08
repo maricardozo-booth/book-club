@@ -1,6 +1,8 @@
 <div>
  <div>
+      &emsp;
    <h2>
+
      Add a new book
    </h2>
 
@@ -52,7 +54,7 @@
        </label>
        <input type="text" id="cover_box" name="query_cover_url">
      </div>
-       <input type="hidden" id="status_box" name="query_status" value="Potential Club reading">
+       <input type="hidden" id="status_box" name="query_status" value="Potential Club read">
      <button class="btn btn-dark">
        Create book
      </button>
@@ -73,7 +75,7 @@
           Meeting
         </label>
         <select id="date_box" name="query_date">
-        <% @active_meetings.each do |a_book| %>
+        <% @future_meetings.each do |a_book| %>
         <option value="<%= a_book.id %>"><%= a_book.date.strftime("%D") %></option>
         <% end %>
        </select>
@@ -111,11 +113,11 @@
 
       <div>
         <label for="book_id_box">
-          Book
+          Chosen books
         </label>
 
         <select id="book_id_box" name="query_book_id">
-        <% @list_of_books.each do |a_book| %>
+        <% @chosen_books.each do |a_book| %>
         <option value="<%= a_book.id %>"><%= a_book.title %></option>
         <% end %>
 
@@ -129,7 +131,6 @@
 
         <select id="status_box" name="query_status">
         <option value="Future meeting">Future meeting</option>
-        <option value="Current meeting">Current meeting</option>
         </select>
       </div>
 
@@ -164,5 +165,5 @@
     </form>
 
 <% else  %>
-<div> There are no open polls right now. </div>
+<div> Last poll chose <%= @chosen_books.at(0).title %> as the next Booth Club read. There are no open polls right now. </div>
 <% end %>

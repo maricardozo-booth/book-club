@@ -1,17 +1,4 @@
 class BooksController < ApplicationController
-  def index
-    matching_books = Book.all
-
-    @list_of_books = matching_books.order({ :created_at => :desc })
-
-    @active_book = matching_books.where({ :status => "Current reading" })
-    
-    @expired_books = matching_books.where({ :status => "Past reading" })
-
-    @future_books = matching_books.where({ :status => "Future reading" })
-
-    render({ :template => "books/index" })
-  end
 
   def show
     the_id = params.fetch("path_id")
@@ -28,11 +15,11 @@ class BooksController < ApplicationController
 
     @list_of_books = matching_books.order({ :created_at => :desc })
 
-    @active_book = matching_books.where({ :status => "Current Club reading" })
+    @active_book = matching_books.where({ :status => "Current Club read" })
     
-    @expired_books = matching_books.where({ :status => "Past reading" })
+    @expired_books = matching_books.where({ :status => "Past Club read" })
 
-    @future_books = matching_books.where({ :status => "Potential Club reading" })
+    @future_books = matching_books.where({ :status => "Potential Club read" })
 
     @poll_books = matching_books.where({ :status => "Current poll" })
 
@@ -90,7 +77,7 @@ class BooksController < ApplicationController
   def poll_update
     matching_books = Book.all
 
-    @potential_books = matching_books.where({ :status => "Potential Club reading" })
+    @potential_books = matching_books.where({ :status => "Potential Club read" })
 
     book_ids = params.fetch("query_book_ids")
     if book_ids.is_a? String
@@ -108,17 +95,17 @@ class BooksController < ApplicationController
   def poll_close
     matching_books = Book.all
 
-    @potential_books = matching_books.where({ :status => "Potential Club reading" })
+    @potential_books = matching_books.where({ :status => "Potential Club read" })
 
-    old_current_book = matching_books.where({ :status => "Current Club reading" }).at(0)
-    old_current_book.update({ :status => "Past Club reading" })
+    old_current_book = matching_books.where({ :status => "Current Club read" }).at(0)
+    old_current_book.update({ :status => "Past Club read" })
 
    @book_ids = params.fetch("query_book_ids")
    the_first_book = Book.where({ :id => @book_ids }).at(0)
-   the_first_book.update({ :status => "Current Club reading" })
+   the_first_book.update({ :status => "Chosen read" })
 
    old_poll = matching_books.where({ :status => "Current poll" })
-   old_poll.update_all({ :status => "Past Club reading" })
+   old_poll.update_all({ :status => "Past Club read" })
 
   redirect_to("/meetings/new", { :notice => "Poll closed successfully."} )
   end

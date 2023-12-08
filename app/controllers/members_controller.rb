@@ -17,7 +17,7 @@ def show
 
   matching_readings = Reading.where({ :member_id => the_id })
 
-  @past_readings = matching_readings.where({ :status => "Past reading" })
+  @past_readings = matching_readings.where({ :status => "Past read" })
 
   matching_active_reading = matching_readings.where({ :status => "Currently reading" })
 
@@ -45,7 +45,7 @@ def my_profile
 
   matching_readings = Reading.where({ :member_id => the_id })
 
-  @past_readings = matching_readings.where({ :status => "Past reading" })
+  @past_readings = matching_readings.where({ :status => "Past read" })
 
   matching_active_reading = matching_readings.where({ :status => "Currently reading" })
 

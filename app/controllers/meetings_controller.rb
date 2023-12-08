@@ -4,10 +4,15 @@ class MeetingsController < ApplicationController
 
     @list_of_meetings = matching_meetings.order({ :created_at => :desc })
 
+    t = Date.today
+
+    @past_meetings = matching_meetings.where('date < ?', t)
+
     matching_books = Book.all
 
     @expired_books = matching_books.where({ :status => "Past Club reading" })
     render({ :template => "meetings/index" })
+
   end
 
   def show
@@ -31,8 +36,6 @@ class MeetingsController < ApplicationController
 
     @list_of_meetings = matching_meetings.order({ :created_at => :desc })
 
-    @active_meetings = matching_meetings.where.not({ :status => "Past Meeting" })
-
     @future_meetings = matching_meetings.where('date > ?', t)
 
     @active_meeting = @future_meetings.at(0)
@@ -43,9 +46,11 @@ class MeetingsController < ApplicationController
 
     @list_of_books = matching_books.order({ :created_at => :desc })
 
-    @potential_books = matching_books.where({ :status => "Potential Club reading" })
+    @potential_books = matching_books.where({ :status => "Potential Club read" })
 
     @poll_books = matching_books.where({ :status => "Current poll" })
+
+    @chosen_books = matching_books.where({ :status => "Chosen read" })
 
     matching_votes = Vote.all
 
@@ -71,6 +76,12 @@ class MeetingsController < ApplicationController
     else
       redirect_to("/meetings", { :alert => the_meeting.errors.full_messages.to_sentence })
     end
+
+    t = Date.today
+    past_meetings = matching_meetings.where('date < ?', t)
+    pas_meetings.update_all.({ :status => "Past meeting" })
+
+
   end
 
   def update

@@ -1,4 +1,6 @@
 <div>
+
+  &emsp;
   <div>
     <h2>
       Past Book Club meetings
@@ -31,7 +33,7 @@
   </thead>
   <tbody>
 
-      <% @list_of_meetings.each do |a_meeting| %>
+      <% @past_meetings.each do |a_meeting| %>
       <tr>
 
         <td>
@@ -59,10 +61,10 @@
 
 
 
-<hr>
 <div>
+  &emsp;
    <h2>
-   Other books
+   Past books
    </h2>
  <div>
 
@@ -73,17 +75,25 @@
          Title
        </th>
 
+                            <th scope="col">
+         Author
+       </th>
 
-       <th scope="col">
+
+                            <th scope="col">
+         Genre
+       </th>
+
+
+              <th scope="col">
          Status
        </th>
+
 
 
        <th scope="col">
          Readers
        </th>
-
-
 
        <th scope="col">
        </th>
@@ -98,15 +108,31 @@
          <%= a_book.title %>
        </td>
 
-
-       <td>
-         <%= a_book.status %>
+              <td>
+         <%= a_book.author %>
        </td>
 
+                     <td>
+         <%= a_book.genre %>
+       </td>
+
+              <td>
+         <% @meetings_of_book = @list_of_meetings.where({ :book_id => a_book.id }).at(0) %>
+         
+         <% if @meetings_of_book != nil  %> 
+         Past Club reading
+         <% else  %> 
+         Not chosen
+         <% end %>
+
+         
+       </td>
 
        <td>
          <%= a_book.readers.count %>
        </td>
+
+
 
        <td>
          <a href="/books/<%= a_book.id %>">

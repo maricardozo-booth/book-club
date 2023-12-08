@@ -17,5 +17,6 @@ class Book < ApplicationRecord
 
 has_many  :readers, class_name: "Reading"
 has_many :votes, class_name: "Vote"
+has_many :associated_meetings, class_name: "Meeting"
   
 end

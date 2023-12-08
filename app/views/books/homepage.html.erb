@@ -1,7 +1,8 @@
 <div>
  <div>
- 
+ &nbsp;
    <center><h1>
+
      Booth's Book Club</center>
    </h1>
  </div>
@@ -12,7 +13,7 @@
 
 
  <div>
-   <h1><center>
+   <h2><center>
      The club is currently reading:<dd>
      <a href="books/<%= @active_book.at(0).id %>"><%= @active_book.at(0).title %></a>
 
@@ -20,10 +21,12 @@
   </dd>
     <dl></center>
     
-   </h1>
-   <center><img src="<%= @active_book.at(0).cover_image_url %>" alt="Book cover"></center>
+   </h2>
+   <center><img src="<%= @active_book.at(0).cover_image_url %>" alt="Book cover" width="230" 
+     height="auto"></center>
 
  </div>
+ &ensp;
  </center>
  <% if current_member == nil %>
      <center><div> Sign in to update your reading progress. </div></center>
@@ -59,6 +62,7 @@
 <% if current_member == nil %>
 <div><center> Sign in to vote on the next book.</center> </div>
     <% else %>
+    <% if @poll_books.at(0) != nil %>
    <center><form action="/insert_vote" method="post">
         <input type="hidden" id="member_id_box" name="query_member_id" value="<%= current_member.id %>">
         <input type="hidden" id="meeting_id_box" name="query_meeting_id" value="<%= @next_meeting.id %>">
@@ -77,6 +81,9 @@
         Vote
       </button>
     </form></center>
+  <% else %>
+  <center>There are no polls open right now. </center>
+  <% end %>
   </div>
 </div>
 <% end %>
