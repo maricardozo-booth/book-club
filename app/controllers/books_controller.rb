@@ -28,7 +28,7 @@ class BooksController < ApplicationController
 
     @list_of_books = matching_books.order({ :created_at => :desc })
 
-    @active_book = matching_books.where({ :status => "Current reading" })
+    @active_book = matching_books.where({ :status => "Current Club reading" })
     
     @expired_books = matching_books.where({ :status => "Past reading" })
 
@@ -36,10 +36,17 @@ class BooksController < ApplicationController
 
     @poll_books = matching_books.where({ :status => "Current poll" })
 
+    t = Date.today
+
     matching_meetings = Meeting.all
 
     @list_of_meetings = matching_meetings.order({ :created_at => :desc })
-    @active_meeting = matching_meetings.where({ :status => "Current meeting" })
+
+    @future_meetings = matching_meetings.where('date > ?', t)
+
+    @active_meeting = @future_meetings.at(0)
+
+    @next_meeting = @future_meetings.at(1)
 
     render({ :template => "books/homepage" })
   end
@@ -96,6 +103,24 @@ class BooksController < ApplicationController
     end 
   end 
   redirect_to("/meetings/new", { :notice => "Poll created successfully."} )
+  end
+
+  def poll_close
+    matching_books = Book.all
+
+    @potential_books = matching_books.where({ :status => "Potential Club reading" })
+
+    old_current_book = matching_books.where({ :status => "Current Club reading" }).at(0)
+    old_current_book.update({ :status => "Past Club reading" })
+
+   @book_ids = params.fetch("query_book_ids")
+   the_first_book = Book.where({ :id => @book_ids }).at(0)
+   the_first_book.update({ :status => "Current Club reading" })
+
+   old_poll = matching_books.where({ :status => "Current poll" })
+   old_poll.update_all({ :status => "Past Club reading" })
+
+  redirect_to("/meetings/new", { :notice => "Poll closed successfully."} )
   end
 
   def destroy

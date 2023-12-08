@@ -146,6 +146,23 @@
    <h2>
      Current poll
    </h2>
-   <>
+
+   <% if @poll_books.at(0) != nil %>
+  
+<h7> Votes for the meeting on <%= @next_meeting.date.strftime("%D") %></h7>
+
 <center>
 <%= pie_chart @poll_books.joins(:votes).group('title').count, library: { title: 'Votes per Book' }, legend: "left" %></center>
+
+<form action="/close_poll" method="post">
+      
+    <div class="form-group">
+      <input type="hidden" id="chosen_book_box" name="query_book_ids" value="<%= @votes_in_order.at(0).at(0) %>">
+      <button class="btn btn-dark">
+        Close poll
+      </button>
+    </form>
+
+<% else  %>
+<div> There are no open polls right now. </div>
+<% end %>

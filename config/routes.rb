@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   post("/insert_poll", { :controller => "books", :action => "poll_update" })
 
+  post("/close_poll", { :controller => "books", :action => "poll_close" })
+
   # CREATE
   post("/insert_vote", { :controller => "votes", :action => "create" })
           

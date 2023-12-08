@@ -12,6 +12,7 @@ class VotesController < ApplicationController
     the_vote = Vote.new
     the_vote.book_id = params.fetch("query_book_id")
     the_vote.member_id = params.fetch("query_member_id")
+    the_vote.meeting_id = params.fetch("query_meeting_id")
 
     if the_vote.valid?
       the_vote.save
@@ -30,9 +31,9 @@ class VotesController < ApplicationController
 
     if the_vote.valid?
       the_vote.save
-      redirect_to("/votes/#{the_vote.id}", { :notice => "Vote updated successfully."} )
+      redirect_to("/", { :notice => "Vote updated successfully."} )
     else
-      redirect_to("/votes/#{the_vote.id}", { :alert => the_vote.errors.full_messages.to_sentence })
+      redirect_to("/", { :alert => the_vote.errors.full_messages.to_sentence })
     end
   end
 

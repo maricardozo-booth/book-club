@@ -6,7 +6,7 @@ class MeetingsController < ApplicationController
 
     matching_books = Book.all
 
-    @expired_books = matching_books.where({ :status => "Past reading" })
+    @expired_books = matching_books.where({ :status => "Past Club reading" })
     render({ :template => "meetings/index" })
   end
 
@@ -27,9 +27,17 @@ class MeetingsController < ApplicationController
   def new
     matching_meetings = Meeting.all
 
+    t = Date.today
+
     @list_of_meetings = matching_meetings.order({ :created_at => :desc })
 
     @active_meetings = matching_meetings.where.not({ :status => "Past Meeting" })
+
+    @future_meetings = matching_meetings.where('date > ?', t)
+
+    @active_meeting = @future_meetings.at(0)
+
+    @next_meeting = @future_meetings.at(1)
 
     matching_books = Book.all
 
@@ -43,7 +51,10 @@ class MeetingsController < ApplicationController
 
     @list_of_votes = matching_votes.order({ :created_at => :desc })
 
+    @votes_count = @poll_books.joins(:votes).group('id').count
     
+    @votes_in_order = @votes_count.sort_by { |id, votes| votes }.reverse
+
     render({ :template => "meetings/new" })
   end
 
