@@ -49,14 +49,22 @@
       </dd>
 
       <dt>
-        Attendance
+        Total attendance count
       </dt>
       <dd>
         <%= @the_meeting.attendances_count %>
       </dd>
 
       <dt>
-        Photos
+        Members who checked-in
+      </dt>
+              <% @the_meeting.attendances.each do |an_attendant| %>
+      <dd>
+        <%= an_attendant.member.username %>
+      </dd>
+<% end %>
+      <dt>
+        Official photo
       </dt>
       <dd>
         <%= @the_meeting.photos %>
@@ -65,11 +73,15 @@
   </div>
 </div>
 
-<hr>
+ <% if current_member != nil %>
+ <% if current_member.admin_status == true %>
+
+ <hr>
 <div>
-    <h2>
-      Update Book Club Meeting Notes
-    </h2>
+  <div>
+    <h3>
+      (Co-chairs only)Edit meeting
+    </h3>
 
 <form action="/update_meeting" method="post">
 <input type="hidden" id="book_box" name="query_book_id" value="<% @the_meeting.book_id %>">
@@ -108,4 +120,10 @@
         Update meeting
       </button>
       </form>
-  
+      <% else %>
+<div> </div>
+     <% end %>
+       <% else %>
+       <div></div>
+
+     <% end %>

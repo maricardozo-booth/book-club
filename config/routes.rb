@@ -94,7 +94,9 @@ Rails.application.routes.draw do
   #------------------------------
 
   devise_for :members
-  get("/members/profile/:path_id", { :controller => "members", :action => "show" })
+  get("/members/:path_id", { :controller => "members", :action => "show" })
+
+  get("/members/profile/:path_id", { :controller => "members", :action => "my_profile" })
 
   get("/members", { :controller => "members", :action => "index" })
 

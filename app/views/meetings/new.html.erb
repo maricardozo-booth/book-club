@@ -74,7 +74,7 @@
         </label>
         <select id="date_box" name="query_date">
         <% @active_meetings.each do |a_book| %>
-        <option value="<%= a_book.id %>"><%= a_book.date %></option>
+        <option value="<%= a_book.id %>"><%= a_book.date.strftime("%D") %></option>
         <% end %>
        </select>
       </div>

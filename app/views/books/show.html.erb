@@ -52,25 +52,21 @@
         <%= @the_book.readers.count %>
       </dd>
 
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_book.created_at) %> ago
-      </dd>
-
     </dl>
   </div>
 </div>
 
-<hr>
 
 
+ <% if current_member != nil %>
+ <% if current_member.admin_status == true %>
+
+ <hr>
 <div>
   <div>
-    <h2>
-      Edit book
-    </h2>
+    <h3>
+      (Co-chairs only)Edit book
+    </h3>
 
     <form action="/modify_book/<%= @the_book.id %>" method="post">
       <div>
@@ -150,5 +146,10 @@
         </a>
       </div>
     </div>
+    <% else %>
+<div> </div>
+     <% end %>
+       <% else %>
+       <div></div>
 
-<hr>
+     <% end %>
