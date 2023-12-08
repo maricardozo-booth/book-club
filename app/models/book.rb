@@ -16,5 +16,6 @@ class Book < ApplicationRecord
   validates(:author, :title, :genre, :number_of_pages, :cover_image_url, presence: true)
 
 has_many  :readers, class_name: "Reading"
+has_many :votes, class_name: "Vote"
   
 end

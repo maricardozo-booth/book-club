@@ -6,6 +6,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  book_id    :integer
+#  meeting_id :integer
 #  member_id  :integer
 #
 class Vote < ApplicationRecord

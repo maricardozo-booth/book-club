@@ -146,8 +146,6 @@
    <h2>
      Current poll
    </h2>
-
-   <%= pie_chart Vote.group(:book_id).count %>
-
-
-<hr>
+   <>
+<center>
+<%= pie_chart @poll_books.joins(:votes).group('title').count, library: { title: 'Votes per Book' }, legend: "left" %></center>

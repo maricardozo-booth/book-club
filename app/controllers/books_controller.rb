@@ -32,7 +32,7 @@ class BooksController < ApplicationController
     
     @expired_books = matching_books.where({ :status => "Past reading" })
 
-    @future_books = matching_books.where({ :status => "Future reading" })
+    @future_books = matching_books.where({ :status => "Potential Club reading" })
 
     @poll_books = matching_books.where({ :status => "Current poll" })
 
