@@ -1,4 +1,4 @@
-<div style="text-align:left; margin:8px;">
+<div style="text-align:left; margin:15px;">
  <div>
  
    <h2>
@@ -65,7 +65,7 @@
 </div>
 <hr>
 
-<div style="text-align:left; margin:8px;">
+<div style="text-align:left; margin:15px;">
    <h2>
      Create new poll
    </h2>
@@ -134,17 +134,38 @@
         <option value="Future meeting">Future meeting</option>
         </select>
       </div>
-
+<div style="text-align:left; margin:15px;">
       <button class="btn btn-dark">
         Create meeting
-      </button>
+      </button></div>
     </form>
   </div>
 </div>
 <hr>
+<div style="text-align:left; margin:15px;">
+   <h2>
 
+     Book Club GPT-Assistant
+   </h2>
 
-<div style="text-align:left; margin:8px;">
+   <h8>
+
+   Chat-GPT is here to help the co-chairs come up with interesting discussion topics for next meeting's book, <%= @active_meeting.book_associated.title %>.
+   </h8>
+   <form action="/insert_message" method="post">
+  
+      <input type="hidden" id="meeting_box" name="query_meeting_id" value="<%= @active_meeting.id %>"></div>
+<div style="text-align:left; margin:15px;">
+     <button class="btn btn-dark">
+       Ask for Assistant help!
+     </button></div>
+   </form>
+   
+ </div>
+</div>
+
+<hr>
+<div style="text-align:left; margin:15px;">
    <h2>
      Current poll
    </h2>

@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all messages
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new message
+    </h2>
+
+    <form action="/insert_message" method="post">
+      <div>
+        <label for="meeting_id_box">
+          Meeting
+        </label>
+
+        <input type="text" id="meeting_id_box" name="query_meeting_id">
+      </div>
+
+      <div>
+        <label for="gpt_reply_box">
+          Gpt reply
+        </label>
+
+        <input type="text" id="gpt_reply_box" name="query_gpt_reply">
+      </div>
+
+      <button>
+        Create message
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Meeting
+        </th>
+
+        <th>
+          Gpt reply
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_messages.each do |a_message| %>
+      <tr>
+        <td>
+          <%= a_message.id %>
+        </td>
+
+        <td>
+          <%= a_message.meeting_id %>
+        </td>
+
+        <td>
+          <%= a_message.gpt_reply %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_message.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_message.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/messages/<%= a_message.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

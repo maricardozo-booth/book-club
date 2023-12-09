@@ -1,0 +1,33 @@
+<div>
+  <div>
+    <h1>
+      Chat-GPT help for next Book Club meeting!
+    </h1>
+
+
+
+
+    <dl>
+      <dt>
+        Meeting
+      </dt>
+      <dd>
+        <%= @the_message.meeting.date %>
+      </dd>
+
+<hr>
+
+
+<div><dl>
+  <% @matching_messages.order(:created_at).each do |message| %>
+    <dt><%= message.role %></dt>
+    <dd><%= simple_format(message.content) %></dd>
+  <% end %>
+
+<hr>
+      <div>
+        <a href="/delete_message/<%= @the_message.id %>">
+          Delete assistance to start again. 
+        </a>
+      </div>
+    </div>
