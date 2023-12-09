@@ -1,6 +1,6 @@
-<div>
+<div style="text-align:left; margin:8px;">
  <div>
-      &emsp;
+ 
    <h2>
 
      Add a new book
@@ -65,7 +65,7 @@
 </div>
 <hr>
 
-
+<div style="text-align:left; margin:8px;">
    <h2>
      Create new poll
    </h2>
@@ -144,7 +144,7 @@
 <hr>
 
 
-
+<div style="text-align:left; margin:8px;">
    <h2>
      Current poll
    </h2>
@@ -164,7 +164,9 @@
         Close poll
       </button>
     </form>
+</div>
 
 <% else  %>
 <div> Last poll chose <%= @chosen_books.at(0).title %> as the next Booth Club read. There are no open polls right now. </div>
 <% end %>
+</div>
