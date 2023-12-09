@@ -60,6 +60,8 @@ class MeetingsController < ApplicationController
     
     @votes_in_order = @votes_count.sort_by { |id, votes| votes }.reverse
 
+    @old_current_book = matching_books.where({ :status => "Chosen read" }).order({ :created_at => :desc }).at(0)
+
     render({ :template => "meetings/new" })
   end
 

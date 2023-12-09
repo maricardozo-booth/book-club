@@ -142,29 +142,8 @@
   </div>
 </div>
 <hr>
-<div style="text-align:left; margin:15px;">
-   <h2>
 
-     Book Club GPT-Assistant
-   </h2>
 
-   <h8>
-
-   Chat-GPT is here to help the co-chairs come up with interesting discussion topics for next meeting's book, <%= @active_meeting.book_associated.title %>.
-   </h8>
-   <form action="/insert_message" method="post">
-  
-      <input type="hidden" id="meeting_box" name="query_meeting_id" value="<%= @active_meeting.id %>"></div>
-<div style="text-align:left; margin:15px;">
-     <button class="btn btn-dark">
-       Ask for Assistant help!
-     </button></div>
-   </form>
-   
- </div>
-</div>
-
-<hr>
 <div style="text-align:left; margin:15px;">
    <h2>
      Current poll
@@ -177,6 +156,8 @@
 <center>
 <%= pie_chart @poll_books.joins(:votes).group('title').count, library: { title: 'Votes per Book' }, legend: "left" %></center>
 
+   <% if @votes_in_order.at(0) != nil %>
+
 <form action="/close_poll" method="post">
       
     <div class="form-group">
@@ -186,8 +167,11 @@
       </button>
     </form>
 </div>
+<% else  %>
+<div> Still waiting for members to vote.
+<% end %>
 
 <% else  %>
-<div> Last poll chose <%= @chosen_books.at(0).title %> as the next Booth Club read. There are no open polls right now. </div>
+<div> Last poll chose <%= @old_current_book.title %> as the next Booth Book Club read. There are no open polls right now. </div>
 <% end %>
 </div>

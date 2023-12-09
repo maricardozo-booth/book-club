@@ -97,9 +97,6 @@ class BooksController < ApplicationController
 
     @potential_books = matching_books.where({ :status => "Potential Club read" })
 
-    old_current_book = matching_books.where({ :status => "Current Club read" }).at(0)
-    old_current_book.update({ :status => "Past Club read" })
-
    @book_ids = params.fetch("query_book_ids")
    the_first_book = Book.where({ :id => @book_ids }).at(0)
    the_first_book.update({ :status => "Chosen read" })
